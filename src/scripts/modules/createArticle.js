@@ -3,7 +3,8 @@ import {
   buildRowDiv
 } from "./buildDOMElement";
 import {
-  showCategoryOptionBox
+  showCategoryOptionBox,
+  showMoodOptionBox
 } from "./API-interface";
 
 
@@ -27,7 +28,9 @@ module.exports.createArticle = function (articleToEdit) {
   let categorySelectDiv = buildDOMElement("div", rowDiv2, null,
     ["form-select", "form-element", "large"], "", {});
   showCategoryOptionBox().then(box => categorySelectDiv.appendChild(box));
-
+  let moodSelectDiv = buildDOMElement("div", rowDiv2, null,
+    ["form-select", "form-element", "large"], "", {});
+  showMoodOptionBox().then(box => moodSelectDiv.appendChild(box));
   return fragment;
 };
 
