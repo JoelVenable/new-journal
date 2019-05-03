@@ -1,18 +1,30 @@
+const localServer = "http://localhost:8088/";
+
 module.exports.API = {
-  fetchJson: function (url, optionsObject) {
-    return fetch(url, optionsObject)
-        .then(response => response.json());
+  getPosts: () => fetchJson(`${localServer}entries`),
+  addNewPost: (entry) => {
+    return pushJson(`${localServer}entries`, "POST", entry);
   },
-  getLocalData: function (endpoint) {
-    return this.fetchJson(`http://localhost:8088/${endpoint}`);
+  updatePost: (entry, id) => {
+    return pushJson(`${localServer}entries/${id}`, "PUT", entry);
   },
-  saveLocalData: function (obj, endpoint) {
-    return this.fetchJson(`http://localhost:8088/${endpoint}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(obj)
-    });
-  }
+  deletePost: (id) => pushJson(`${localServer}entries/${id}`, "DELETE"),
+  getCategories: () => fetchJson(`${localServer}categories`),
+  getMoods: () => fetchJson(`${localServer}moods`)
 };
+
+
+function fetchJson(url) {
+  return fetch(url)
+    .then(response => response.json());
+}
+
+function pushJson(url, method, object) {
+  return fetch(url, {
+    method: method,
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(object)
+  });
+}

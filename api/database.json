@@ -1,0 +1,50 @@
+{
+  "entries": [{
+      "id": "1",
+      "postTitle": "I had an Amazing Epiphany!",
+      "date": "04-01-2019",
+      "postImage": {
+        "url": "img/big-bird.jpg",
+        "alt": "Big Bird"
+      },
+      "content": "Spicy jalapeno bacon ipsum dolor amet jerky est dolor, ex turducken aute ut. In anim esse sirloin alcatra ullamco dolore tri-tip strip steak meatloaf salami fatback.",
+      "mood": "Awesome"
+    },
+    {
+      "id": "2",
+      "postTitle": "Utrum igitur tibi litteram videor an totas paginas commovere?",
+      "date": "04-01-2019",
+      "postImage": {
+        "url": "img/ecr-goman.jpg",
+        "alt": "Bicycle"
+      },
+      "content": "Landjaeger andouille dolore, ball tip dolor ribeye shank pork belly filet mignon.",
+      "mood": "Meh"
+    },
+    {
+      "id": "3",
+      "postTitle": "Nihil acciderat ei, quod nollet, nisi quod anulum",
+      "date": "04-01-2019",
+      "postImage": {
+        "url": "img/Dell-XPS-15-1-1024x683.jpg",
+        "alt": "Best Laptop ever"
+      },
+      "content": "Spicy jalapeno bacon ipsum dolor amet jerky est dolor, ex turducken aute ut. In anim esse sirloin alcatra ullamco dolore tri-tip strip steak meatloaf salami fatback.",
+      "mood": "Awesome"
+    }
+  ],
+  "moods": [{
+    "name": "Excited",
+    "id": 1
+  }, {
+    "name": "Awesome",
+    "id": 2
+  }],
+  "categories": [{
+    "name": "Javascript",
+    "id": 1
+  }, {
+    "name": "Clean Code",
+    "id": 2
+  }]
+}
