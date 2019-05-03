@@ -18,7 +18,7 @@ module.exports.createArticle = function (articleToEdit) {
   let rowDiv = buildRowDiv(section);
   let columnDiv1 = buildDOMElement("div", rowDiv, null, ["column", "width-8", "offset-2", "center"]);
 
-
+  // Change the title of the form if adding or editing
   let title = newArticle ? "Add a Journal Entry" : `Edit the ${articleToEdit.postTitle} Article`;
   buildDOMElement("h2", columnDiv1, title, ["mb-30"]);
   let articleForm = buildDOMElement("form", columnDiv1, null); //  Add "contact-form" class?
@@ -31,6 +31,21 @@ module.exports.createArticle = function (articleToEdit) {
   let moodSelectDiv = buildDOMElement("div", rowDiv2, null,
     ["form-select", "form-element", "large"], "", {});
   showMoodOptionBox().then(box => moodSelectDiv.appendChild(box));
+
+  //         <div class="row">
+  //           <div class="column width-12">
+  //             <div class="field-wrapper">
+  //               <textarea name="message" class="form-message form-element large" placeholder="Message*" tabindex="7" required></textarea>
+  //             </div>
+  //           </div>
+  let contentRow = buildRowDiv(articleForm);
+  let wrapperDiv = buildDOMElement("div", contentRow, null, ["field-wrapper"]);
+  buildDOMElement("textarea", wrapperDiv, null, ["form-message", "form-element", "large"], "new-message", {
+    name: "message",
+    placeholder: "Spew some awesome content...",
+    tabIndex: 7,
+    required: ""
+  })
   return fragment;
 };
 
@@ -44,6 +59,10 @@ function addField(labelText, inputType, inputId, tabIndex) {
     placeholder: labelText,
     tabIndex: tabIndex
   });
+
+
+
+
   return fragment;
 }
 
