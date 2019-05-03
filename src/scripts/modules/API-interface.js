@@ -21,27 +21,34 @@ module.exports = {
         });
       });
   },
-  showCategoryOptionBox: function (fragment, tabIndex) {
+  showCategoryOptionBox: function (tabIndex) {
     return API.getCategories()
-      .then(categories => {
-        let select = buildDOMElement("select", fragment, null, ["form-aux"], "select-category", {
-          name: "options",
-          "data-label": "Categories",
-          tabIndex: tabIndex
-        })
-        categories.forEach(category => {
-          buildDOMElement("option", select, category.name, null, `category-option-${category.id}`, {
-            value: category.id
-          });
-          // <select name="options" class="form-aux" data-label="Options" tabindex="5">
-          //   <option selected="selected" value="">How'd You Find Sartre</option>
-          //   <option value="">From a friend</option>
-          //   <option value="">Found Sartre online</option>
-          //   <option value="">Previous client</option>
-          //   <option value="">Through advertising</option>
-          // </select>
-        });
-        return fragment;
-      });
+      .then(categories => buildOptions(categories, "category", tabIndex));
+  },
+  showMoodOptionBox: function (tabIndex) {
+    return API.getMoods()
+      .then(moods => buildOptions(moods, "mood", tabIndex));
   }
 };
+
+function buildOptions(options, type, tabIndex) {
+  let fragment = document.createDocumentFragment();
+  let select = buildDOMElement("select", fragment, null, ["form-aux"], `select-${type}`, {
+    name: "options",
+    "data-label": type,
+    tabIndex: tabIndex
+  });
+  options.forEach(option => {
+    buildDOMElement("option", select, option.name, null, `${type}-option-${option.id}`, {
+      value: option.id
+    });
+    // <select name="options" class="form-aux" data-label="Options" tabindex="5">
+    //   <option selected="selected" value="">How'd You Find Sartre</option>
+    //   <option value="">From a friend</option>
+    //   <option value="">Found Sartre online</option>
+    //   <option value="">Previous client</option>
+    //   <option value="">Through advertising</option>
+    // </select>
+  });
+  return fragment;
+}

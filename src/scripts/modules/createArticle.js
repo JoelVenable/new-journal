@@ -26,7 +26,6 @@ module.exports.createArticle = function (articleToEdit) {
   rowDiv2.appendChild(addField("Post Date", "date", "date", 2));
   let categorySelectDiv = buildDOMElement("div", rowDiv2, null,
     ["form-select", "form-element", "large"], "", {});
-    
   showCategoryOptionBox().then(box => categorySelectDiv.appendChild(box));
 
   return fragment;
